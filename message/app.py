@@ -36,7 +36,7 @@ def messages():
 def messages_id(id):
     return json.dumps(mensajes[id])
 
-@app.route('/messages/add',methods=['POST'])
+@app.route('/messages/add',methods=['POST','GET'])
 def messages_add():
     id_document = add_message(request.json)
     retorna = {"ID":str(id_document)}
