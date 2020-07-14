@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Messages</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td>{{ message.message }}</td>
+                    <td>{{ message.status }}</td>
+                    <td>{{ message.user }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
