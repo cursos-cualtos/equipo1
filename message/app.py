@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from markupsafe import escape
 from db_utils import add_message
 import json
@@ -36,9 +36,12 @@ def messages():
 def messages_id(id):
     return json.dumps(mensajes[id])
 
-@app.route('/messages/add')
+@app.route('/messages/add',methods=['POST'])
 def messages_add():
-    add_message()
+    id_document = add_message(request.json)
+    retorna = {"ID":str(id_document)}
+    return retorna
+
 
 if __name__ == "__main__":
     app.run(port=5002)
