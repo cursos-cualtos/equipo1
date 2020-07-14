@@ -38,7 +38,7 @@ def messages_id(id):
 
 @app.route('/messages/add')
 def messages_add():
-    add_messages()
+    add_message()
 
 if __name__ == "__main__":
     app.run(port=5002)
