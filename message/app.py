@@ -1,5 +1,6 @@
 from flask import Flask
 from markupsafe import escape
+from db_utils import add_message
 import json
 
 mensajes = [
@@ -35,6 +36,9 @@ def messages():
 def messages_id(id):
     return json.dumps(mensajes[id])
 
+@app.route('/messages/add')
+def messages_add():
+    add_messages()
 
 if __name__ == "__main__":
     app.run(port=5002)
