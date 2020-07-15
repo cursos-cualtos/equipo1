@@ -43,6 +43,28 @@ def messages_add():
     retorna = {"ID":str(id_document)}
     return retorna
 
+@app.route('/messages/getAll')
+def messages_get_all():
+    document = get_all_messages()
+    mensajes = ""
+    for mensaje in document:
+        mensajes += str(mensaje)+"\n"
+    return mensajes
+
+@app.route('/messages/get',methods=['POST','GET'])
+def messages_get():
+    id_mensaje = request.args.get('id')
+    document = get_message(ObjectId(id_mensaje))
+    mensaje = str(document)
+    return mensaje
+
+@app.route('/messages/edit',methods=['POST','GET'])
+def messages_edit():
+    id_mensaje  = request.args.get('id')
+    id_document = edit_message(ObjectId(id_mensaje),request.json)
+    retorna = {"STATUS-":str(id_document)}
+    return retorna
+
 
 if __name__ == "__main__":
     app.run(port=5002)
